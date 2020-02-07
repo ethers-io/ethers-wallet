@@ -14,7 +14,7 @@
     "dist-version": "node -e \"let v = require('./package.json').version; require('fs').writeFileSync('./src.ts/_version.ts', 'export const version = \\\"' + v +'\\\";\\n')\"",
     "eslint": "eslint index.js contracts/*.js providers/*.js utils/*.js wallet/*.js wordlists/*.js",
     "test": "if [ \"$RUN_PHANTOMJS\" = \"1\" ]; then npm run-script test-phantomjs; else npm run-script test-node; fi",
-    "test-node": "npm run dist-test && mocha --no-colors --reporter tests/reporter tests/test-*.js",
+    "test-node": "npm run dist-test && mocha --no-colors --reporter tests/reporter tests/test-build.js",
     "test-phantomjs": "npm run dist-test && gulp tests && phantomjs --web-security=false ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js ./tests/test.html ./tests/reporter.js",
     "version": "npm dist"
   },
@@ -22,6 +22,7 @@
     "aes-js": "3.0.0",
     "bn.js": "^4.4.0",
     "elliptic": "6.5.2",
+    "noble-secp256k1": "0.3.1",
     "hash.js": "1.1.3",
     "js-sha3": "0.5.7",
     "scrypt-js": "2.0.4",
