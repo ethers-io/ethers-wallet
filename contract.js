@@ -149,11 +149,11 @@ function runMethod(contract, functionName, estimateOnly) {
                     errors.throwError('call (constant functions) require a provider or a signer with a provider', errors.UNSUPPORTED_OPERATION, { operation: 'call' });
                 }
                 // Check overrides make sense
-                ['gasLimit', 'gasPrice', 'value'].forEach(function (key) {
-                    if (tx[key] != null) {
-                        throw new Error('call cannot override ' + key);
-                    }
-                });
+                /*             ['gasLimit', 'gasPrice', 'value'].forEach(function(key) {
+                                 if (tx[key] != null) {
+                                     throw new Error('call cannot override ' + key) ;
+                                 }
+                             }); */
                 if (tx.from == null && contract.signer) {
                     tx.from = contract.signer.getAddress();
                 }
@@ -198,7 +198,7 @@ function runMethod(contract, functionName, estimateOnly) {
                     if (tx.from == null && contract.signer) {
                         tx.from = contract.signer.getAddress();
                     }
-                    return contract.provider.estimateGas(tx);
+                    return contract.provider.estimateGas(tx, blockTag);
                 }
                 if (tx.gasLimit == null && method.gas != null) {
                     tx.gasLimit = bignumber_1.bigNumberify(method.gas).add(21000);
