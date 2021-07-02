@@ -209,6 +209,7 @@ export function getNetwork(network: Networkish): Network {
                     name: standard.name,
                     chainId: standard.chainId,
                     ensAddress: (standard.ensAddress || null),
+                    multicallContract: (standard.multicallContract || null),
                     _defaultProvider: (standard._defaultProvider || null)
                 };
             }
@@ -227,6 +228,7 @@ export function getNetwork(network: Networkish): Network {
             name: standard.name,
             chainId: standard.chainId,
             ensAddress: standard.ensAddress,
+            multicallContract: standard.multicallContract,
             _defaultProvider: (standard._defaultProvider || null)
         };
     }
@@ -262,6 +264,7 @@ export function getNetwork(network: Networkish): Network {
         name: network.name,
         chainId: standard.chainId,
         ensAddress: (network.ensAddress || standard.ensAddress || null),
+        multicallContract: (network.multicallContract || standard.multicallContract || null),
         _defaultProvider: defaultProvider
     };
 }
